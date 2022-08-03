@@ -1,3 +1,4 @@
+@import '../constants/colors.scss';
 .table {
   &__row {
     display: flex;
@@ -28,5 +29,26 @@
   }
   &__item {
     margin: 10px 10px;
+  }
+}
+
+.modal {
+  position: absolute;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(53, 58, 131, 0.308);
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 80px;
+    border-radius: 20px;
+    background-color: $primary-white;
   }
 }

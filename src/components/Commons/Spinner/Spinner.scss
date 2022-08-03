@@ -1,0 +1,20 @@
+@import '../constants/colors.scss';
+
+.spinner {
+  margin: 0 auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  border: 5px solid gray;
+  border-top: 5px solid $primary-blue;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

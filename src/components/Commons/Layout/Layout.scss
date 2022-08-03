@@ -1,0 +1,37 @@
+main {
+  max-width: 665px;
+  margin: 0 auto;
+  display: flex;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 10px;
+  width: 152px;
+  height: 100px;
+  left: 225px;
+  top: 87px;
+  padding-left: 20px;
+  background: #bdbdbd;
+}
+
+.btn-primary {
+  background: #4B51EF;
+  border-style: hidden;
+  border-radius: 5px;
+  padding: 5px 15px;
+  color: #FFFFFF!important;
+  -webkit-appearance: none;
+  width: fit-content;
+}
+
+.btn-primary:disabled {
+  background: #AFAFAF;
+}
+
+.btn-primary > a,
+input[type="button"].btn-primary {
+  color: #FFFFFF!important;
+}

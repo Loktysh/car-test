@@ -1,0 +1,10 @@
+@import '../constants/colors.scss';
+
+header {
+  width: 100%;
+  background-color: $primary-blue;
+}
+.header {
+  margin: 0 auto;
+  padding: 30px 0;
+}

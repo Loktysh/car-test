@@ -4,7 +4,6 @@ import { CoinData } from '../../types';
 import ModalCoinAdd from '../ModalCoinAdd/ModalCoinAdd';
 
 const CoinCard = (props: CoinData) => {
-  console.log(props);
   const navigate = useNavigate();
   const [isModal, setModal] = useState(false);
   const { name, price, rank, volumeUsd24Hr, marketCapUsd } = {

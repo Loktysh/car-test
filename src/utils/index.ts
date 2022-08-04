@@ -23,9 +23,9 @@ const getCoinsList = async (page = 0) => {
   }
 };
 
-const getCoinHistory = async (page = 0) => {
+const getCoinHistory = async (id: string) => {
   try {
-    const response = await fetch(`https://api.coincap.io/v2/assets/?offset=${page * 10}&limit=10`);
+    const response = await fetch(`https://api.coincap.io/v2/assets/${id}/history?interval=d1`);
     if (!response.ok) {
       throw new Error(`Error: ${response.status}`);
     }

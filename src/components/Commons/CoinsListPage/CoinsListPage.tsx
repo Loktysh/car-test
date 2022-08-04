@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { getCoinsList } from '../../../utils/index';
 import Spinner from '../Spinner/Spinner';
 import './CoinsListPage.scss';
@@ -34,6 +34,7 @@ function CoinsListPage() {
     );
   };
   const CoinCard = (props: any) => {
+    const navigate = useNavigate();
     const [isModal, setModal] = useState(false);
     const { name, price, rank, volumeUsd24Hr, marketCapUsd } = {
       name: props.name,
@@ -47,14 +48,24 @@ function CoinsListPage() {
     };
     return (
       <>
-        {isModal && <ModalCoinAdd closeHandler={() => setModal(!isModal)} />}
-        <div className='table__head table__row'>
+        {isModal && <ModalCoinAdd closeHandler={setModal(!isModal)} />}
+        <div
+          className='table__head table__row'
+          onClick={() => navigate('/coin/btc', { replace: false })}
+        >
           <div className='table__item table__rank'>{rank}</div>
           <div className='table__item table__name'>{name}</div>
           <div className='table__item table__price'>{price}</div>
           <div className='table__item table__volume'>{volumeUsd24Hr}</div>
           <div className='table__item table__cap'>{marketCapUsd}</div>
-          <button onClick={() => setModal(!isModal)}>Add</button>
+          <button
+            onClick={e => {
+              setModal(!isModal);
+              e.stopPropagation();
+            }}
+          >
+            Add
+          </button>
         </div>
       </>
     );

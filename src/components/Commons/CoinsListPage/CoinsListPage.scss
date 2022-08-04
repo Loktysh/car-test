@@ -1,5 +1,8 @@
 @import '../constants/colors.scss';
+.coins-container {
+}
 .table {
+  height: 440px;
   &__row {
     display: flex;
     flex-direction: row;

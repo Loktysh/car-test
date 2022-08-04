@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { getCoinData } from '../../../utils';
+import { CoinData } from '../../types';
+import { getCoinData } from '../../utils';
 import NotFoundPage from '../NotFoundPage';
 import './CoinPage.scss';
 
-const CoinPage = (props: any) => {
+const CoinPage = () => {
   const { id } = useParams();
-  const [coinData, setCoinData] = useState([]);
+  const [coinData, setCoinData] = useState<CoinData | null>(null);
   const [loading, setLoading] = useState(true);
   const getCoin = useCallback(async () => {
     await getCoinData(id as string).then(coin => {
@@ -20,7 +21,7 @@ const CoinPage = (props: any) => {
   }, [getCoin]);
   return (
     <>
-      {!loading && (
+      {!loading && coinData && (
         <>
           <div className='coin'>
             <div>ID:</div>
@@ -52,18 +53,8 @@ const CoinPage = (props: any) => {
           </div>
           <div className='chart'></div>
         </>
-        // "rank": "11",
-        // "symbol": "DOGE",
-        // "name": "Dogecoin",
-        // "supply": "132670764299.8940900000000000",
-        // "maxSupply": null,
-        // "marketCapUsd": "8839728570.5130728437455431",
-        // "volumeUsd24Hr": "92073264.9404348236508918",
-        // "priceUsd": "0.0666290619275503",
-        // "changePercent24Hr": "-1.7143664053580399",
-        // "vwap24Hr": "0.0673219318256484",
-        // "explorer": "http://dogechain.info/chain/Dogecoin"
       )}
+      {!loading && !coinData && <NotFoundPage />}
     </>
   );
 };

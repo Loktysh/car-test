@@ -1,8 +1,8 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Layout from './Commons/Layout/Layout';
-import NotFoundPage from './Commons/NotFoundPage';
-import CoinPage from './Commons/CoinPage/CoinPage';
-import CoinsListPage from './Commons/CoinsListPage/CoinsListPage';
+import Layout from './Layout/Layout';
+import NotFoundPage from './NotFoundPage';
+import CoinPage from './CoinPage/CoinPage';
+import CoinsListPage from './CoinsListPage/CoinsListPage';
 
 export const App: React.FC = () => {
   return (

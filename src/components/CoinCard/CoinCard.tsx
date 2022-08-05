@@ -11,14 +11,17 @@ const CoinCard = (props: CoinData) => {
     rank: props.rank,
     price:
       parseFloat(props.priceUsd) > 0
-        ? parseFloat(props.priceUsd).toFixed(4)
-        : parseFloat(props.priceUsd).toFixed(7),
+        ? parseFloat(props.priceUsd.slice(0, 7))
+        : parseFloat(props.priceUsd.slice(0, 5)),
     volumeUsd24Hr: parseInt(props.volumeUsd24Hr),
     marketCapUsd: parseInt(props.marketCapUsd),
   };
+  console.log(typeof price);
   return (
     <>
-      {isModal && <ModalCoinAdd closeHandler={() => setModal(!isModal)} />}
+      {isModal && (
+        <ModalCoinAdd name={name} price={price} closeHandler={() => setModal(!isModal)} />
+      )}
       <div
         className='table__head table__row'
         onClick={() => navigate(`/coin/${name.toLowerCase()}`, { replace: false })}

@@ -6,6 +6,8 @@ export interface PaginationProps {
 }
 
 export interface PropsModalCoin {
+  name: string;
+  price: number;
   closeHandler: () => void;
 }
 

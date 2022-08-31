@@ -1,8 +1,17 @@
 @import '../constants/colors.scss';
 .coins-container {
+  padding: 10px 0px;
+  &__header {
+    padding-left: 20px;
+  }
+  &__table {
+    margin: 10px 0;
+  }
 }
+
 .table {
-  height: 440px;
+  height: 500px;
+  overflow-y: auto;
   &__row {
     display: flex;
     flex-direction: row;
@@ -12,12 +21,16 @@
     border-bottom: 1px rgb(226, 226, 226) solid;
     cursor: pointer;
   }
+  &__item {
+    min-width: 130px;
+    margin: 10px 10px;
+  }
   &__price {
     text-align: right;
-    width: 90px;
+    min-width: 90px;
   }
   &__rank {
-    width: 50px;
+    min-width: 50px;
     text-align: center;
   }
   &__volume {
@@ -25,13 +38,10 @@
     text-align: center;
   }
   &__cap {
-    width: 100px;
+    min-width: 120px;
     text-align: center;
   }
   &__name {
-    width: 200px;
-  }
-  &__item {
-    margin: 10px 10px;
+    min-width: 130px;
   }
 }

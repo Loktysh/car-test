@@ -1,3 +1,6 @@
+import { useSelector } from 'react-redux';
+import { WalletState } from '../features/walletReducer';
+
 const getCoinData = async (id: string) => {
   try {
     const response = await fetch(`https://api.coincap.io/v2/assets/${id}`);
@@ -10,9 +13,11 @@ const getCoinData = async (id: string) => {
     return { message: 'Not found' };
   }
 };
-const getCoinsList = async (page = 0) => {
+const getCoinsList = async (page = 0, limit = 10) => {
   try {
-    const response = await fetch(`https://api.coincap.io/v2/assets/?offset=${page * 10}&limit=10`);
+    const response = await fetch(
+      `https://api.coincap.io/v2/assets/?offset=${page * 10}&limit=${limit}`,
+    );
     if (!response.ok) {
       throw new Error(`Error: ${response.status}`);
     }
@@ -36,4 +41,22 @@ const getCoinHistory = async (id: string) => {
   }
 };
 
-export { getCoinsList, getCoinData, getCoinHistory };
+const walletAmountDiff = async (coins: WalletState) => {
+  const newPrice = Object.entries(coins).filter(e => e[0] !== 'spendAmount');
+  let newAmount = 0;
+  try {
+    for await (const results of newPrice) {
+      newAmount =
+        newAmount +
+        (await getCoinData(results[0].toLowerCase()).then(
+          data => parseFloat(data.data.priceUsd) * results[1].count,
+        ));
+    }
+  } catch (error) {
+    return '';
+  }
+  const diff = (100 - newAmount / (coins.spendAmount / 100)).toFixed(2);
+  return `${newAmount.toFixed(2)} USD ${(coins.spendAmount - newAmount).toFixed(2)} (${diff} %)`;
+};
+
+export { getCoinsList, getCoinData, getCoinHistory, walletAmountDiff };

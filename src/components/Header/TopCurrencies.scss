@@ -1,0 +1,10 @@
+@import '../constants/_colors.scss';
+
+.top-currencies {
+ display: flex;
+ align-items: center;
+}
+.currency {
+  color: $primary-white;
+  padding: 0 5px;
+}

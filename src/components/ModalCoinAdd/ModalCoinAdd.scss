@@ -3,8 +3,8 @@
 .modal {
   position: absolute;
   display: flex;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   top: 0px;
@@ -14,7 +14,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 320px;
+    column-gap: 20px;
+    width: 400px;
     height: 80px;
     border-radius: 20px;
     background-color: $primary-white;

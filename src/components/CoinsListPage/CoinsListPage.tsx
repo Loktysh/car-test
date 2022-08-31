@@ -25,8 +25,10 @@ function CoinsListPage() {
   }, [getCoins, searchParams, page]);
   return (
     <div className='coins-container'>
-      <h1 key={'title'}>All coins:</h1>
-      <div className='table'>
+      <h1 className='coins-container__header' key={'title'}>
+        All coins:
+      </h1>
+      <div className='coins-container__table table'>
         <div className='table__head table__row'>
           <div className='table__item table__rank'>Rank</div>
           <div className='table__item table__name'>Name</div>

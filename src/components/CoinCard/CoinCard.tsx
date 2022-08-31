@@ -16,7 +16,6 @@ const CoinCard = (props: CoinData) => {
     volumeUsd24Hr: parseInt(props.volumeUsd24Hr),
     marketCapUsd: parseInt(props.marketCapUsd),
   };
-  console.log(typeof price);
   return (
     <>
       {isModal && (
@@ -24,7 +23,9 @@ const CoinCard = (props: CoinData) => {
       )}
       <div
         className='table__head table__row'
-        onClick={() => navigate(`/coin/${name.toLowerCase()}`, { replace: false })}
+        onClick={() =>
+          navigate(`/coin/${name.toLowerCase().replace(/\s+/g, '-')}`, { replace: false })
+        }
       >
         <div className='table__item table__rank'>{rank}</div>
         <div className='table__item table__name'>{name}</div>
